@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Banner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="ad.size" content="width=300,height=250" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #333;
+      --secondary: #fff;
+      --white: #fff;
+      --width: 300px;
+      --height: 250px;
+      --half: calc(min(var(--width), var(--height)) * .5);
+      --family: Arial, Helvetica, sans-serif;
+      --base: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      position: absolute;
+    }
+
+    #loader {
+      width: var(--width);
+      height: var(--height);
+      display: grid;
+      align-items: center;
+      justify-items: center;
+    }
+
+    #loader::before {
+      content: '';
+      border: 5px solid #afafb7;
+      border-radius: 50%;
+      width: var(--half);
+      height: var(--half);
+      max-width: 60px;
+      max-height: 60px;
+    }
+
+    #loader::after {
+      content: '';
+      position: absolute;
+      border: 3px solid #afafb7;
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spinner 1s linear infinite;
+      width: var(--half);
+      height: var(--half);
+      padding: 1px;
+      max-width: 60px;
+      max-height: 60px;
+    }
+
+    @keyframes spinner {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(-360deg);
+      }
+    }
+
+    .banner {
+      display: none;
+    }
+  </style>
+  <script type="text/javascript">
+    var clickTag = ""
+    this.onload = onLoaderReady
+    function onLoaderReady() {
+      if (document.querySelector('#loader') && document.querySelector('#loader').offsetWidth > 0) {
+        politeInit();
+      } else {
+        setTimeout(() => onLoaderReady(), 100);
+      }
+    }
+    function politeInit() {
+      const extCSS = document.createElement('link');
+      extCSS.setAttribute("rel", "stylesheet");
+      extCSS.setAttribute("type", "text/css");
+      extCSS.setAttribute("href", "css/style.css");
+      document.getElementsByTagName("head")[0].appendChild(extCSS);
+      extCSS.onload = () =>
+        include('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js').onload = () =>
+          include('js/DrawSVGPlugin.min.js').onload = () =>
+            include('js/main.js').onload = () => loadImages()
+      function include(file) {
+        const script = document.createElement('script')
+        script.src = file
+        script.type = 'text/javascript'
+        script.defer = true
+        document.getElementsByTagName('head').item(0).appendChild(script)
+        return script
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loader"></div>
+  <div class="banner" id="banner">
+
+    <div id="line" class="size retina">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 300 250" style="enable-background:new 0 0 300 250;" xml:space="preserve">
+        <style type="text/css">
+          .st0 {
+            display: none;
+          }
+
+          .st1 {
+            fill: none;
+            stroke: #11a2df;
+            stroke-width: 1;
+            stroke-miterlimit: 10;
+          }
+
+          .st2 {
+            fill: none;
+            stroke: #11a2df;
+            stroke-width: 1;
+            stroke-miterlimit: 10;
+          }
+
+          .st3 {
+            fill: none;
+            stroke: #0099DC;
+            stroke-miterlimit: 10;
+          }
+
+          .st4 {
+            fill: none;
+            stroke: #0099DC;
+            stroke-miterlimit: 10;
+            stroke-dasharray: 3px;
+          }
+        </style>
+        <g id="lines">
+          <line id="line1" class="st1" x1="6.5" y1="8.5" x2="291.5" y2="8.5"></line>
+        </g>
+      </svg>
+    </div>
+    <div id="imgMain" class="size retina"></div>
+    <div id="line2" class="size retina">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 300 250" style="enable-background:new 0 0 300 250;" xml:space="preserve">
+        <style type="text/css">
+          .st0 {
+            display: none;
+          }
+
+          .st1 {
+            fill: none;
+            stroke: #11a2df;
+            stroke-width: 1;
+            stroke-miterlimit: 10;
+          }
+
+          .st2 {
+            fill: none;
+            stroke: #11a2df;
+            stroke-width: 1;
+            stroke-miterlimit: 10;
+          }
+        </style>
+        <g id="lines">
+          <polyline id="line2" class="st1" points="7,8 7,242.5 291.5,242.5"></polyline>
+          <line id="line3" class="st1" x1="291" y1="9" x2="291" y2="243"></line>
+        </g>
+      </svg>
+    </div>
+
+    <div id="graphic" class="size retina"></div>
+    <div id="copy1" class="size retina copy"></div>
+    <div id="copy2" class="size retina copy"></div>
+    <div id="copy3" class="size retina copy"></div>
+
+    <div id="off">
+      <div id="numberContainer" class="lato-black"><span id="number">65</span></div>
+    </div>
+
+    <div id="cta" class="size retina">
+      <div id="cta1" class="size retina"></div>
+    </div>
+
+    <div id="qsButtons" class="size2">
+      <div id="inactive" class="size retina"></div>
+      <div id="q1" class="size retina qss"></div>
+      <div id="q2" class="size retina qss"></div>
+      <div id="q3" class="size retina qss"></div>
+      <div id="q4" class="size retina qss"></div>
+      <div id="q5" class="size retina "></div>
+    </div>
+
+    <div id="shineCont">
+      <div id="shine1" class="shine"></div>
+    </div>
+
+    <div id="logo" class="size retina"></div>
+    <div id="disclaimer" class="size retina"></div>
+    <div id="btn-exit"></div>
+  </div>
+</body>
+
+</html>
